@@ -2,13 +2,10 @@
 
 require_relative "rbock_palindrome/version"
 
-# module RbockPalindrome
-#   class Error < StandardError; end
-#   # Your code goes here...
+module RbockPalindrome
+  #   class Error < StandardError; end
+  #   # Your code goes here...
 
-# end
-
-class String
   def palindrome?
     processed_content == processed_content.reverse
   end
@@ -21,6 +18,14 @@ class String
   private
 
     def processed_content
-      self.scan(/[a-z]/i).join.downcase
+      self.to_s.scan(/[a-z\d]/i).join.downcase
     end
+end
+
+class String
+  include RbockPalindrome
+end
+
+class Integer
+  include RbockPalindrome
 end
